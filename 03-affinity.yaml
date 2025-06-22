@@ -6,13 +6,14 @@ spec:
   # Hard rule
   affinity:
     nodeAffinity:
-      requiredDuringSchedulingIgnoredDuringExecution:
-        nodeSelectorTerms:
-        - matchExpressions:
-          - key: hardware
+      preferredDuringSchedulingIgnoredDuringExecution:
+      - weight: 1
+        preference:
+          matchExpressions:
+          - key: another-node-label-key
             operator: In
             values:
-            - gpu
+            - another-node-label-value
   containers: 
   - name: nginx
     image: nginx:stable-perl
