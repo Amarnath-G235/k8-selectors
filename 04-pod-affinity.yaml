@@ -35,14 +35,15 @@ metadata:
 spec:
   affinity:
     podAntiAffinity:
-      requiredDuringSchedulingIgnoredDuringExecution: 
+      requiredDuringSchedulingIgnoredDuringExecution:
       - labelSelector:
           matchExpressions:
           - key: purpose
             operator: In
             values:
-            - affinity 
+            - affinity
         topologyKey: topology.kubernetes.io/zone
-  containers: 
+  containers:
+  # docker run -d --name nginx nginx
   - name: nginx
     image: nginx:stable-perl
