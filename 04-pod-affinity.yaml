@@ -2,10 +2,11 @@ apiVersion: v1
 kind: Pod
 metadata:
   name: pod-1
-  labels: 
-    purpose: affinity 
+  labels:
+    purpose: affinity
 spec:
-  containers: 
+  containers:
+  # docker run -d --name nginx nginx
   - name: nginx
     image: nginx:stable-perl
 ---
@@ -19,12 +20,13 @@ spec:
       requiredDuringSchedulingIgnoredDuringExecution:
       - labelSelector:
           matchExpressions:
-          - key: purpose 
+          - key: purpose
             operator: In
             values:
-            - affinity 
-        topologyKey: "kubernetes.io/hostname"
-  containers: 
+            - affinity
+        topologyKey: topology.kubernetes.io/zone
+  containers:
+  # docker run -d --name nginx nginx
   - name: nginx
     image: nginx:stable-perl
 ---
@@ -47,3 +49,4 @@ spec:
   # docker run -d --name nginx nginx
   - name: nginx
     image: nginx:stable-perl
+    
