@@ -3,7 +3,7 @@ kind: Pod
 metadata:
   name: nginx
 spec:
-  # Hard rule
+  # soft rule
   affinity:
     nodeAffinity:
       preferredDuringSchedulingIgnoredDuringExecution:
